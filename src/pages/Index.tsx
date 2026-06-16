@@ -1,5 +1,13 @@
 import { useEffect, useRef } from 'react';
 
+const contents = [
+  { title: 'Введение', pages: '2–3' },
+  { title: 'История предприятия', pages: '4' },
+  { title: 'Фотоотчет', pages: '5' },
+  { title: 'Защита практической работы', pages: '6' },
+  { title: 'Вывод', pages: '7' },
+];
+
 const sections = [
   {
     num: '01',
@@ -92,6 +100,30 @@ const Index = () => {
       </header>
 
       <main className="mx-auto max-w-3xl px-6 pb-40">
+        <section className="reveal border-t border-foreground/10 py-16 md:py-24">
+          <div className="grid gap-8 md:grid-cols-[5rem_1fr]">
+            <span className="font-display text-2xl italic text-muted-foreground">00</span>
+            <div>
+              <h2 className="font-display text-4xl font-medium leading-tight tracking-tight md:text-5xl">
+                Содержание
+              </h2>
+              <ul className="mt-8 space-y-4">
+                {contents.map((item) => (
+                  <li key={item.title} className="flex items-baseline gap-3">
+                    <span className="text-lg leading-relaxed text-foreground/80 flex-1">
+                      {item.title}
+                    </span>
+                    <span className="shrink-0 border-b border-dotted border-foreground/20 flex-[2] mx-2" />
+                    <span className="text-lg text-muted-foreground tabular-nums shrink-0">
+                      {item.pages}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {sections.map((s, i) => (
           <section
             key={s.num}
